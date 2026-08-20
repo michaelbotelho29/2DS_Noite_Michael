@@ -4,82 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for(2DS_Noite_Michael'static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Sistema Back-End</h1>
-        <p>Projeto pratico de DSI</p>
+        <p>Projeto CornTeam</p>
         <hr>
 
         <!--cards de metrica-->
         <div class="cads-geral">
-        <div class="card">
-        <h3>total de itens</h3>
-        <p class="numero">{{total}}</p>
+            <div class="card">
+                <h3>Total De Itens</h3>
+                <p class="numero">{{ total }}</p>
+            </div>
 
+            <div class="card">
+                <h3>Faturamento</h3>
+                <p class="numero">R$ {{ faturamento }}</p>
+            </div>
+
+            <div class="card">
+                <h3>concluidos</h3>
+                <p class="numero">R$ {{ concluidos }}</p>
+            </div>
         </div>
-<div class="card">
-    <h3>faturamento</h3>
-    <p class="numero">R${{"%.2f|format(faturamento)}}</p>
 
-</div>
-<div class="card"></div>
-    <h3>concluidos</h3>
-    <p class="numero">R${{concluidos}}</p>
-
-
-        </div>
-
-        <form action="/" method="ger" class="search-form">
-            <input type="text" name="busca" placeholder="pesquisar por nome..." values="{{busca}}">
+        <!-- Formulário de Busca -->
+        <form action="/" method="get" class="search-form">
+            <input type="text" name="busca" placeholder="pesquisar por nome..." value="{{ busca if busca else '' }}">
             <button type="submit">buscar</button>
-            {{% if busca %}}
-                <a href="/" class="btn-clear">limparbusca</a>
-                {{% endif %}} 
-
-                <h2>registro do sistema</h2>
-
-                {% if cadastro|legth == 0%}
-                <p><em>nenhum registro encontrado</em></p>
-                {% else %}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>nossa</th>
-                            <th>informações</th>
-                            <th>valor (R$)</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                            
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {% for item in cadastro %}
-                            <tr>
-                                   <th>{{loop.index}}</th>
-                                   <th>{{item.nome}}</th>
-                                   <th>{{item.info}}</th>
-                                   <td>R$ {{ "%.2f|format(item.valor)}}</td>
-
-                                   <span class="bagde {{ 'badge-sucess ' if item.status == 'concluido' else 'badge-warning'}}">
-                                       {{item.status}} 
-                                   </span>
-                                   <td>
-                                    <td>
-                                        <a href="/mudar-status/{{loop.index0}}" class="btn-action">mudarstatus</a>
-                                        <a href="/excluir/{{loop.index0 }}" class="btn-charge" onclick="return confirm('deseja excluir?')">excluir</a>               </td>
-                                   </td>
-                            </tr>
-                            {endfor}
-                        </tbody>
-                </table>
-                {endif}
-
-
+            {% if busca %}
+                <a href="/" class="btn-clear">Limpar Busca</a>
+            {% endif %} 
         </form>
-          <a href="/cadastro" class="btn">Abrir Formulario</a> 
+
+        <hr>
+
+        <h2>Registro Do Sistema</h2>
+
+        {% if cadastro|length == 0 %}
+            <p><em>Nenhum Registro Encontrado</em></p>
+        {% else %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>nome</th>
+                        <th>informações</th>
+                        <th>valor (R$)</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cadastro %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.nome }}</td>
+                        <td>{{ item.info }}</td>
+                        <td>R$ {{ "%.2f"|format(item.valor) }}</td>
+                        <td>
+                            <span class="badge {{ 'badge-success' if item.status == 'concluido' else 'badge-warning' }}">
+                                {{ item.status }} 
+                            </span>
+                        </td>
+                        <td>
+                            <a href="/mudar-status/{{ loop.index0 }}" class="btn-action">Mudar Status</a>
+                            <a href="/excluir/{{ loop.index0 }}" class="btn-charge" onclick="return confirm('deseja excluir?')">Excluir</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+        <br>
+        <a href="/cadastro" class="btn">Abrir Formulario</a> 
     </div>
 </body>
 </html>

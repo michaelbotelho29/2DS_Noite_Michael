@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Novo Cadastro</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
 </head>
 <body>
     <div class="container">
-        <h2>Novo cadastro</h2>
+        <h2>Novo Cadastro</h2>
         <form action="/salvar" method="post">
 
-            <label >Nome principal<label>
-                <input type="text"name="campo_nome" required>
+            <label>Nome Principal</label>
+            <input type="text" name="campo_nome" required>
 
-                <label>Informaçõescomplementares</label>
-                <input type="text" name="campo_info" required>
+            <label>Informações Complementares</label>
+            <input type="text" name="campo_info" required>
 
-                    <label for="">valor</label>
-                    <input type="number" name="cam_valor" placeholder="0.00" required>
-                <button type="submit">Salvar</button>
+            <label>Valor</label>
+            <input type="number" step="0.01" min="0.01" name="campo_valor" placeholder="0.00" required>
+
+            <button type="submit">Salvar</button>
         </form>
         <hr>
-        <a href="/">Voltar a pagina anterior</a>
+        <a href="/">Voltar à Página Anterior</a>
 
-
-        <p>Projeto pratico de DSI</p>
-        <hr>
-        <a href="/cadastro" class="btn">Abrir Formulario</a> 
+        <p>CornTeam</p>
     </div>
 </body>
 </html>

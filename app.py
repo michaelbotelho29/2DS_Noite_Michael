@@ -1,94 +1,94 @@
-from flask import Flask, render_template, request
-
-# intencia do servidor do flask
+# Importa o Flask, renderização, requisições, redirecionamento
+from flask import Flask, render_template, request, redirect
+ 
+# Inicializa o servidor web da aplicação Flask
 app = Flask(__name__)
-
-# Reota 1: Pagina inicial
-@app.route('/')
+ 
+# Lista global para armazenar os dicionários dos cadastros
+lista_de_cadastros = []
+ 
+# ROTA 1: Página Inicial (Home)
+@app.route("/")
 def home():
+    # 1. Capturar termo digitado no campo busca GET
     busca = request.args.get("busca", "").strip().lower()
-
+ 
+    # 2. Filtra a lista se houver busca digitada
     if busca:
-        registros_filtrados = [item for item in lista_de_caastro if busca  in item["nome"].lower()]
-
-            else:
-            registros_filtrados = lista_de_caastro
-    
-         # calculo de metrica / indicadores 
-         total_registro = len(lista_de_caastro)
-        total_faturamento = len(item["valor"] for item in lista_de_caastro)
-        total_concluidos = sum(1 for item in lista_de_caastro if item["status"] == "concluidos")
-
-  #4 enviar os indicadores para a pagina 
-  
-      return render_template("index.html",
-      cadastro=registros_filtrados,
-      total= total_registro,
-      faturamento= total_faturamento,
-      concluidos= total_concluidos,
-      busca=busca
-      )
-
-
-#Rota 2: Exibição da tela de cadastro MEteodo (GET)
-@app.route('/cadastro')
+        registro_filtrados = [item for item in lista_de_cadastros if busca in item["nome"].lower()]
+    else:
+        registro_filtrados = lista_de_cadastros
+ 
+    # 3. Cálculo de métrica / indicadores
+    total_registro = len(lista_de_cadastros)  # Corrigido o typo de 'regitro'
+    total_faturamento = sum(item["valor"] for item in lista_de_cadastros)
+    total_concluidos = sum(1 for item in lista_de_cadastros if item["status"] == "Concluído")
+ 
+    # 4. Enviar os indicadores para a página index.html
+    return render_template(
+        "index.html",
+        cadastro=registro_filtrados,
+        total=total_registro,
+        faturamento=total_faturamento,
+        concluidos=total_concluidos,
+        busca=busca
+    )
+ 
+# ROTA 2: Exibição da Tela de Cadastro (Método GET)
+@app.route("/cadastro")
 def pagina_cadastro():
     return render_template("cadastro.html")
-
-# Rota 3: Processamento dos dados Metodo (POST)
-@app.route('/salvar', methods=["POST"])
+ 
+# ROTA 3: Processamento dos Dados do Formulário (Método POST)
+@app.route("/salvar", methods=["POST"])
 def salvar_cadastro():
-    nome_digitado = request.form.get("campo_nome", "").strip()
-    info_digitado = request.form.get("campo_info", "").strip()
-    valor_str = render_template("campo_valor","0").strip() 
-
-try:
-    valor = float(valor_str)
-    if valor <=0:
-        raise valueError()
-except valueError;
-    return "<h3>Erro 400: o valor deve ser um valor maior que zero!</h3><br>< a href='/cadastro'> voltar ao formulario<a/>",400
-#validadação vereficar se os campos obrigatorios vieram vazios
-
-if not nome or not info:
-    return "<h3> 400: preecha todos os campos obrigatorios dp formulario</h3><br><a href' /ccadastro'> voltar ao formulario</a>",400
-
-
-
-#criação
-
-novo_registro = {
-    "nome": nome,
-    "info": info,
-    "valor":valor,
-    "status": "pedente"
-}
-
-lista_de_caastro.append(novo_registro)
-
-#rederecionar para a home 
-
-return redirect("/")
-
-$ rota 4: alterar status
-
-@app.route("/mudar-status/<int:indices>")
-def mudar_status(indices):
-    if 0 <= indice < len(lista_de_caastro):
-
-        if lista_de_caastro[indice]["status"]== "pendente"
-            lista_de_caastro[indice]["status"] == "concluidos"
-            else:
-                lista_de_caastro[indice]["status"]== "pendente"
-
+    # Captura os dados enviados pelo formulário
+    nome = request.form.get("campo_nome", "").strip() # Ajustado para 'nome'
+    info = request.form.get("campo_info", "").strip() # Ajustado para 'info'
+    valor_str = request.form.get("campo_valor", "0").strip()
+ 
+    # Validação 1: Tratar conversão de valor numérico
+    try: 
+        valor = float(valor_str)
+        if valor <= 0:
+            raise ValueError()
+    except ValueError:
+        return "<h3>Erro 400: O valor deve ser maior que zero!</h3><br><a href='/cadastro'>Voltar ao formulário</a>", 400
+ 
+    # Validação 2: Verificar se os campos obrigatórios vieram vazios
+    if not nome or not info:
+        return "<h3>Erro 400: Preencha todos os campos obrigatórios do formulário</h3><br><a href='/cadastro'>Voltar ao formulário</a>", 400
+ 
+    # Criação da estrutura de dados 
+    novo_registro = {
+        "nome": nome,
+        "info": info,
+        "valor": valor,
+        "status": "Pendente"  # Status sempre inicia como pendente
+    }
+ 
+    lista_de_cadastros.append(novo_registro)
+    # Redirecionar para a home
     return redirect("/")
-
-    @app.route("/excluir/,int:inidce")
-    def excluir_cadastro(indice):
-        if 0<= indice < len(lista_de_caastro):
-            lista_de_caastro.pop(indice)
-        return redirect("/")
-    return render_template("resultado.html", nome=nome_digitado, info=info_digitado)
-
-if __name__ == '__main__':
+ 
+# ROTA 4: Alterar Status
+@app.route("/mudar-status/<int:indice>")
+def mudar_status(indice):
+    if 0 <= indice < len(lista_de_cadastros):
+        # Alterar o status entre "Pendente" e "Concluído" (Usando '=' e não '==')
+        if lista_de_cadastros[indice]["status"] == "Pendente":
+            lista_de_cadastros[indice]["status"] = "Concluído"
+        else:
+            lista_de_cadastros[indice]["status"] = "Pendente"
+ 
+    return redirect("/")
+ 
+# ROTA 5: Excluir registro
+@app.route("/excluir/<int:indice>")  # Corrigido 'inidce' para 'indice'
+def excluir_cadastro(indice):
+    if 0 <= indice < len(lista_de_cadastros):
+        lista_de_cadastros.pop(indice)
+    return redirect("/")
+# Garante que o servidor só inicialize se este arquivo for executado diretamente
+if __name__ == "__main__":
     app.run(debug=True)
