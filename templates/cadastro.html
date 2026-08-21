@@ -22,10 +22,28 @@
 
             <button type="submit">Salvar</button>
         </form>
+
+         <!-- SE QUISER, COLOQUE O TERMINAL AQUI: -->
+        <div class="terminal-logs">
+            <div class="terminal-topo">
+                <span class="circulo vermelho"></span>
+                <span class="circulo amarelo"></span>
+                <span class="circulo verde"></span>
+                <p class="terminal-titulo">CORN_TERMINAL_V2.0.exe</p>
+            </div>
+            <div class="terminal-conteudo" id="log-texto">
+                <p class="log-linha">[STATUS] Aguardando dados de entrada...</p>
+            </div>
+        </div>
+        
         <hr>
         <a href="/">Voltar à Página Anterior</a>
 
         <p>CornTeam</p>
     </div>
+    <!-- Cole esta linha bem no final do corpo dos seus HTMLs -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+</html>
+
 </html>

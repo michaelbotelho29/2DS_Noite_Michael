@@ -77,10 +77,26 @@
                     {% endfor %}
                 </tbody>
             </table>
+               <!-- ... tabela de registros anterior ... -->
         {% endif %}
+
+        <!-- COLOQUE O TERMINAL AQUI: -->
+        <div class="terminal-logs">
+            <div class="terminal-topo">
+                <span class="circulo vermelho"></span>
+                <span class="circulo amarelo"></span>
+                <span class="circulo verde"></span>
+                <p class="terminal-titulo">CORN_TERMINAL_V2.0.exe</p>
+            </div>
+            <div class="terminal-conteudo" id="log-texto">
+                <p class="log-linha">[STATUS] Inicializando interface...</p>
+            </div>
+        </div>
 
         <br>
         <a href="/cadastro" class="btn">Abrir Formulario</a> 
     </div>
+
+
 </body>
 </html>
