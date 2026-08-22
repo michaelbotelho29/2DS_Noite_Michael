@@ -1,39 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Social M Sync</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Sistema Back-End</h1>
+        <h1>Social M Sync</h1>
         <p>Projeto CornTeam</p>
         <hr>
 
-        <!--cards de metrica-->
-        <div class="cads-geral">
-            <div class="card">
-                <h3>Total De Itens</h3>
-                <p class="numero">{{ total }}</p>
-            </div>
+        <!-- Cards de Métrica -->
+       <div class="cads-geral">
+    <div class="card">
+        <h3>Total De clientes</h3>
+        <p class="numero">{{ total }}</p>
+    </div>
 
-            <div class="card">
-                <h3>Faturamento</h3>
-                <p class="numero">R$ {{ faturamento }}</p>
-            </div>
+    <div class="card">
+        <h3>Pendentes</h3>
+        <p class="numero">{{ pendentes }}</p>
+    </div>
 
-            <div class="card">
-                <h3>concluidos</h3>
-                <p class="numero">R$ {{ concluidos }}</p>
-            </div>
-        </div>
-
+    <div class="card">
+        <h3>Finalizados</h3>
+        <p class="numero">{{ concluidos }}</p>
+    </div>
+</div>
         <!-- Formulário de Busca -->
         <form action="/" method="get" class="search-form">
-            <input type="text" name="busca" placeholder="pesquisar por nome..." value="{{ busca if busca else '' }}">
-            <button type="submit">buscar</button>
+            <input type="text" name="busca" placeholder="pesquisar por usuário..." value="{{ busca if busca else '' }}">
+            <button type="submit">Buscar</button>
             {% if busca %}
                 <a href="/" class="btn-clear">Limpar Busca</a>
             {% endif %} 
@@ -50,9 +49,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>nome</th>
-                        <th>informações</th>
-                        <th>valor (R$)</th>
+                        <th>Usuário</th>
+                        <th>CNPJ</th>
+                        <th>CEP</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
@@ -61,11 +60,11 @@
                     {% for item in cadastro %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ item.nome }}</td>
-                        <td>{{ item.info }}</td>
-                        <td>R$ {{ "%.2f"|format(item.valor) }}</td>
+                        <td>{{ item.usuario }}</td>
+                        <td>{{ item.cnpj }}</td>
+                        <td>{{ item.cep }}</td>
                         <td>
-                            <span class="badge {{ 'badge-success' if item.status == 'concluido' else 'badge-warning' }}">
+                            <span class="badge {{ 'badge-success' if item.status == 'Concluído' else 'badge-warning' }}">
                                 {{ item.status }} 
                             </span>
                         </td>
@@ -77,10 +76,9 @@
                     {% endfor %}
                 </tbody>
             </table>
-               <!-- ... tabela de registros anterior ... -->
         {% endif %}
 
-        <!-- COLOQUE O TERMINAL AQUI: -->
+        <!-- Terminal Logs -->
         <div class="terminal-logs">
             <div class="terminal-topo">
                 <span class="circulo vermelho"></span>
@@ -94,9 +92,9 @@
         </div>
 
         <br>
-        <a href="/cadastro" class="btn">Abrir Formulario</a> 
+        <a href="/cadastro" class="btn">Abrir Formulário</a> 
     </div>
 
-
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
