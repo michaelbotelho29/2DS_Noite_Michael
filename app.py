@@ -1,8 +1,17 @@
+import os
+from dotenv import load_dotenv
+
 # Importa o Flask, renderização, requisições, redirecionamento
 from flask import Flask, render_template, request, redirect
 
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+
 # Inicializa o servidor web da aplicação Flask
 app = Flask(__name__)
+
+# Configura a chave secreta a partir da variável no arquivo .env
+app.secret_key = os.getenv("CHAVE_SECRETA_FLASK")
 
 # Lista global para armazenar os dicionários dos cadastros
 lista_de_cadastros = []

@@ -10,3 +10,4 @@ env/
 # Arquivos de configurações locais da IDE
 .vscode/
 .idea/
+.env    
