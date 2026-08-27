@@ -444,6 +444,7 @@ p strong {
 
 p:hover strong {
     color: #ffffff;
+    
     text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
 }
 
