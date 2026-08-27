@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+</head>
+<body>
+   
+    <form action="/salvar" method="post">
+
+        <label>Método de Pagamento</label>
+        <input type="radio" name="campo_pix" required value="">
+        <input type="radio" name="campo_debito" required value="">        
+        <input type="radio" name="campo_credito" required value="">        
+
+
+        <label>Número do Cartão</label>
+        <input type="number" name="campo_cartao" required>
+
+        <label>Número Pix</label>
+        <input type="month" name="campo_npix" placeholder="00.000.000/0001-00" required>
+
+        <label>CEP</label>
+        <input type="text" name="campo_cep" placeholder="00000-000" required>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

@@ -7,17 +7,17 @@
 }
 
 body {
-    background-color: #0b0f19; /* Fundo dark profundo */
-    color: #c3cadb; /* Texto claro confortável */
+    background-color: #0b0f19;
+    color: #c3cadb;
     margin: 40px auto;
-    max-width: 800px;
+    max-width: 950px;
     padding: 0 20px;
     line-height: 1.5;
 }
 
-/* CONTAINER PRINCIPAL (EFEITO GLOW) */
+/* CONTAINER PRINCIPAL */
 .container {
-    background: #121826; /* Painel central */
+    background: #121826;
     padding: 35px;
     border-radius: 12px;
     border: 1px solid #1f293d;
@@ -42,7 +42,16 @@ h1 {
 
 h2 {
     font-size: 22px;
-    color: #00e5ff; /* Ciano tecnológico */
+    color: #00e5ff;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    cursor: default;
+}
+
+h2:hover {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(0, 229, 255, 0.8);
+    transform: translateX(4px);
 }
 
 /* GRID DE CARDS */
@@ -97,10 +106,21 @@ form label {
     color: #8f9cae;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    cursor: pointer;
 }
 
+form label:hover {
+    color: #00e5ff;
+    text-shadow: 0 0 5px rgba(0, 229, 255, 0.4);
+    transform: scale(1.02);
+}
+
+/* SUPORTE PARA TODOS OS CAMPOS DE TEXTO E SENHA */
 form input[type="text"],
-form input[type="number"] {
+form input[type="number"],
+form input[type="password"] {
     width: 100%;
     padding: 12px;
     background: #1a2235;
@@ -108,17 +128,44 @@ form input[type="number"] {
     border-radius: 6px;
     color: #ffffff;
     font-size: 15px;
-    transition: all 0.3s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-form input:focus {
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="password"]:focus {
     outline: none;
     border-color: #00e5ff;
     box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
     background: #1d273d;
 }
 
-/* Formulário de Busca Inline */
+/* CAMPO DE SENHA COM OLHO */
+.senha-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+}
+
+.senha-input-container input {
+    padding-right: 45px;
+}
+
+.btn-toggle-senha {
+    position: absolute;
+    right: 12px;
+    background: transparent !important;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    box-shadow: none !important;
+    line-height: 1;
+}
+
+/* FORMULÁRIO DE BUSCA INLINE */
 .search-form {
     flex-direction: row;
     gap: 10px;
@@ -129,27 +176,32 @@ form input:focus {
     flex: 1;
 }
 
-/* TABELAS FUTURISTAS */
+/* TABELAS FUTURISTAS COM ROLAGEM DE SEGURANÇA */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #1f293d;
+}
+
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #1f293d;
 }
 
 th, td {
-    padding: 14px;
+    padding: 12px 10px;
     text-align: left;
+    position: relative;
 }
 
 th {
     background-color: #1a2235;
     color: #00e5ff;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border-bottom: 2px solid #26334d;
@@ -158,7 +210,11 @@ th {
 td {
     background-color: #131a2a;
     border-bottom: 1px solid #1f293d;
-    font-size: 14px;
+    font-size: 13px;
+}
+
+table tr {
+    transition: background-color 0.2s ease;
 }
 
 tr:last-child td {
@@ -166,17 +222,21 @@ tr:last-child td {
 }
 
 tr:hover td {
-    background-color: #1a2235; /* Destaque na linha ao passar o mouse */
+    background-color: #1a2235;
+    color: #ffffff;
+    box-shadow: inset 4px 0 0 0 #00e5ff;
 }
 
-/* BADGES DE STATUS (NEON REATIVO) */
+/* BADGES DE STATUS */
 .badge {
-    padding: 5px 10px;
+    padding: 4px 8px;
     border-radius: 4px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     text-transform: uppercase;
     display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
 }
 
 .badge-warning { 
@@ -185,10 +245,20 @@ tr:hover td {
     border: 1px solid rgba(255, 184, 0, 0.3);
 }
 
+.badge-warning:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
+}
+
 .badge-success { 
     background-color: rgba(0, 229, 147, 0.1); 
     color: #00e593; 
     border: 1px solid rgba(0, 229, 147, 0.3);
+}
+
+.badge-success:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 229, 147, 0.4);
 }
 
 /* BOTÕES E LINKS */
@@ -216,17 +286,27 @@ tr:hover td {
     filter: brightness(1.1);
 }
 
-/* Botões de Ação na Tabela */
+.btn:active, button:active, button[type="submit"]:active {
+    transform: scale(0.97);
+    filter: brightness(0.9);
+}
+
+/* COLUNA DE AÇÕES */
+td:last-child {
+    white-space: nowrap;
+}
+
 .btn-action {
     background-color: #26334d;
     color: #00e5ff;
-    padding: 6px 12px;
+    padding: 5px 10px;
     text-decoration: none;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     border: 1px solid rgba(0, 229, 255, 0.2);
     transition: all 0.2s;
+    display: inline-block;
 }
 
 .btn-action:hover {
@@ -237,14 +317,15 @@ tr:hover td {
 .btn-charge, .btn-danger {
     background-color: rgba(220, 53, 69, 0.1);
     color: #ff4a5a;
-    padding: 6px 12px;
+    padding: 5px 10px;
     text-decoration: none;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     border: 1px solid rgba(220, 53, 69, 0.3);
     transition: all 0.2s;
-    margin-left: 5px;
+    margin-left: 4px;
+    display: inline-block;
 }
 
 .btn-charge:hover, .btn-danger:hover {
@@ -252,7 +333,6 @@ tr:hover td {
     color: #ffffff;
 }
 
-/* Link de Limpar Busca */
 .btn-clear {
     color: #6c7d93;
     text-decoration: none;
@@ -265,22 +345,77 @@ tr:hover td {
     color: #ff4a5a;
 }
 
-/* Links normais/voltar */
 a:not([class]) {
-    color: #7209b7;
     color: #00e5ff;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    transition: opacity 0.2s;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 a:not([class]):hover {
-    text-decoration: underline;
-    opacity: 0.8;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
 }
 
-/* DIVISORES E PARÁGRAFOS */
+/* CAIXA EXPANSÍVEL (VER MAIS / DETALHES) */
+.detalhes-box {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-detalhes {
+    background-color: #121826;
+    color: #00e5ff;
+    border: 1px solid #00e5ff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    list-style: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-detalhes:hover {
+    background-color: #00e5ff;
+    color: #0b0f19;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+details summary::-webkit-details-marker,
+details summary::marker {
+    display: none;
+}
+
+.info-extra {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background: #0f172a;
+    border: 1px solid #00e5ff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 6px;
+    z-index: 999;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.info-extra p {
+    margin: 4px 0;
+    font-size: 12px;
+    color: #c3cadb;
+    word-break: break-word;
+}
+
+.info-extra strong {
+    color: #00e5ff;
+}
+
+/* DIVISORES E RODAPÉ */
 hr { 
     border: 0; 
     height: 1px; 
@@ -292,122 +427,16 @@ p {
     margin-bottom: 10px;
 }
 
-/* TEXTO CORNTEAM FOOTER */
-p:last-of-type {
-    font-size: 11px;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 25px;
-    text-align: center;
-}
-
-/* ===================================================
-   EFEITOS EXTRAS DE HOVER E ANIMAÇÃO (ADICIONAR NO FIM)
-   =================================================== */
-
-/* Feedback visual imediato ao clicar em qualquer botão principal */
-.btn:active, button:active, button[type="submit"]:active {
-    transform: scale(0.97);
-    filter: brightness(0.9);
-}
-
-/* Links comuns com efeito de acendimento neon ao passar o mouse */
-a:not([class]) {
-    transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-a:not([class]):hover {
-    color: #ffffff;
-    text-decoration: none;
-    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
-}
-
-/* Linhas da tabela com transição suave e leve brilho na borda esquerda */
-table tr {
-    transition: background-color 0.2s ease;
-}
-
-tr:hover td {
-    color: #ffffff;
-    box-shadow: inset 4px 0 0 0 #00e5ff; /* Barrinha ciano na esquerda da linha */
-}
-
-/* Efeito pulsar suave nos Badges de Status quando passa o mouse */
-.badge {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: default;
-}
-
-.badge-success:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 229, 147, 0.4);
-}
-
-.badge-warning:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
-}
-
-/* Animação suave para as caixas de texto quando ganham foco */
-form input[type="text"],
-form input[type="number"] {
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-/* Efeito de destaque no rodapé do CornTeam */
-p:last-of-type {
-    transition: color 0.3s ease;
-    cursor: pointer;
-}
-
-p:last-of-type:hover {
-    color: #00e5ff;
-    text-shadow: 0 0 5px rgba(0, 229, 255, 0.3);
-}
-/* ===================================================
-   HOVERS PARA TÍTULOS, TEXTOS E ETIQUETAS DO SISTEMA
-   =================================================== */
-
-/* Título principal do projeto */
-.container > p:first-of-type, 
-p strong:contains("Projeto CornTeam") {
+.container > p:first-of-type {
     transition: color 0.3s ease, text-shadow 0.3s ease;
     cursor: default;
 }
 
 .container > p:first-of-type:hover {
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(114, 9, 183, 0.6); /* Glow roxo elétrico */
+    text-shadow: 0 0 10px rgba(114, 9, 183, 0.6);
 }
 
-/* Subtítulos (Registro Do Sistema, Novo Cadastro, Registro Processado) */
-h2 {
-    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-    display: inline-block; /* Garante que o efeito foque apenas no texto */
-    cursor: default;
-}
-
-h2:hover {
-    color: #ffffff;
-    text-shadow: 0 0 12px rgba(0, 229, 255, 0.8); /* Glow ciano neon */
-    transform: translateX(4px); /* Desloca levemente para o lado */
-}
-
-/* Etiquetas dos formulários (Nome Principal, Valor, Informações) */
-form label {
-    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
-    display: inline-block;
-    cursor: pointer;
-}
-
-form label:hover {
-    color: #00e5ff; /* Acende em ciano */
-    text-shadow: 0 0 5px rgba(0, 229, 255, 0.4);
-    transform: scale(1.02);
-}
-
-/* Textos em negrito dentro dos parágrafos de resultado */
 p strong {
     transition: color 0.2s ease, text-shadow 0.2s ease;
     cursor: default;
@@ -418,26 +447,18 @@ p:hover strong {
     text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
 }
 
-
-/* ===================================================
-   CORREÇÃO: PAPEL DE PAREDE CYBERPUNK NO FUNDO
-   =================================================== */
-body {
-    /* Remove a cor sólida e coloca uma imagem irada de ficção científica */
-    background-image: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)), 
-                      url('https://unsplash.com');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+p:last-of-type {
+    font-size: 11px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    text-align: center;
+    transition: color 0.3s ease;
+    cursor: pointer;
 }
 
-/* Deixa o container um pouco mais opaco para o fundo não atrapalhar a leitura da tabela */
-.container {
-    background: rgba(18, 24, 38, 0.95) !important;
-    backdrop-filter: blur(10px); /* Efeito de vidro jateado */
-    border: 1px solid rgba(0, 229, 255, 0.2) !important;
+p:last-of-type:hover {
+    color: #00e5ff;
+    text-shadow: 0 0 5px rgba(0, 229, 255, 0.3);
 }
-
-
-

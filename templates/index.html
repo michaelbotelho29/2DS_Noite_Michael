@@ -13,22 +13,23 @@
         <hr>
 
         <!-- Cards de Métrica -->
-       <div class="cads-geral">
-    <div class="card">
-        <h3>Total De clientes</h3>
-        <p class="numero">{{ total }}</p>
-    </div>
+        <div class="cads-geral">
+            <div class="card">
+                <h3>Total De clientes</h3>
+                <p class="numero">{{ total }}</p>
+            </div>
 
-    <div class="card">
-        <h3>Pendentes</h3>
-        <p class="numero">{{ pendentes }}</p>
-    </div>
+            <div class="card">
+                <h3>Pendentes</h3>
+                <p class="numero">{{ pendentes }}</p>
+            </div>
 
-    <div class="card">
-        <h3>Finalizados</h3>
-        <p class="numero">{{ concluidos }}</p>
-    </div>
-</div>
+            <div class="card">
+                <h3>Finalizados</h3>
+                <p class="numero">{{ concluidos }}</p>
+            </div>
+        </div>
+
         <!-- Formulário de Busca -->
         <form action="/" method="get" class="search-form">
             <input type="text" name="busca" placeholder="pesquisar por usuário..." value="{{ busca if busca else '' }}">
@@ -53,6 +54,7 @@
                         <th>CNPJ</th>
                         <th>CEP</th>
                         <th>Status</th>
+                        <th>Detalhes</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -67,6 +69,17 @@
                             <span class="badge {{ 'badge-success' if item.status == 'Concluído' else 'badge-warning' }}">
                                 {{ item.status }} 
                             </span>
+                        </td>
+                        <td>
+                            <!-- BOTÃO DE EXPANDIR INFORMAÇÕES -->
+                            <details class="detalhes-box">
+                                <summary class="btn-detalhes">Ver Mais</summary>
+                                <div class="info-extra">
+                                    <p><strong>E-mail:</strong> {{ item.email if item.email else 'Não informado' }}</p>
+                                    <p><strong>Telefone:</strong> {{ item.telefone if item.telefone else 'Não informado' }}</p>
+                                    <p><strong>Senha:</strong> {{ item.senha }}</p>
+                                </div>
+                            </details>
                         </td>
                         <td>
                             <a href="/mudar-status/{{ loop.index0 }}" class="btn-action">Mudar Status</a>

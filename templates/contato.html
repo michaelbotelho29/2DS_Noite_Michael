@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h2>Informações de Contato</h2>
+        
+        <form action="/salvar-contato" method="post">
+            <label>Telefone</label>
+            <input type="number" name="campo_telefone" placeholder="(00)00000-0000" required>
+
+            <label>Email</label>
+            <input type="text" name="campo_email" placeholder="emailexemplo@gmail.com" required>
+
+            <button type="submit">Finalizar Cadastro</button>
+        </form>
+    </div>
+</body>
+</html>

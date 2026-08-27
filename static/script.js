@@ -460,4 +460,15 @@ if (logTextoContainer) {
     }, 4000); // Adiciona um log a cada 4 segundos
 }
 
+function toggleSenha() {
+    const inputSenha = document.getElementById('senha');
+    const btnOlho = document.querySelector('.btn-toggle-senha');
 
+    if (inputSenha.type === 'password') {
+        inputSenha.type = 'text';
+        btnOlho.textContent = '🙈'; // Ícone/emoji para ocultar
+    } else {
+        inputSenha.type = 'password';
+        btnOlho.textContent = '👁️'; // Ícone/emoji para mostrar
+    }
+}

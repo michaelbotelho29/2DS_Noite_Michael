@@ -9,13 +9,20 @@
 <body>
     <div class="container">
         <h2>Novo Cadastro</h2>
+        
+        <!-- Ao clicar no botão submit, os dados vão para /salvar -->
         <form action="/salvar" method="post">
-
             <label>Usuário</label>
             <input type="text" name="campo_usuario" required>
-
-            <label>Senha</label>
-            <input type="text" name="campo_senha" required>
+            <div class="senha-group">
+                <label for="senha">Senha</label>
+                <div class="senha-input-container">
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha...">
+                    <button type="button" class="btn-toggle-senha" onclick="toggleSenha()">
+                        👁️
+                    </button>
+                </div>
+            </div>
 
             <label>CNPJ</label>
             <input type="text" name="campo_cnpj" placeholder="00.000.000/0001-00" required>
@@ -23,7 +30,7 @@
             <label>CEP</label>
             <input type="text" name="campo_cep" placeholder="00000-000" required>
 
-            <button type="submit">Salvar</button>
+            <button type="submit">Salvar e Continuar</button>
         </form>
 
         <div class="terminal-logs">
@@ -40,10 +47,9 @@
         
         <hr>
         <a href="/">Voltar à Página Anterior</a>
-
         <p>CornTeam</p>
     </div>
-    
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
