@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Cadastro</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
         <h2>Novo Cadastro</h2>
         
-        <!-- Ao clicar no botão submit, os dados vão para /salvar -->
         <form action="/salvar" method="post">
-            <label>Usuário</label>
-            <input type="text" name="campo_usuario" required>
+            <label for="campo_usuario">Usuário</label>
+            <input type="text" id="campo_usuario" name="campo_usuario" required>
+
             <div class="senha-group">
                 <label for="senha">Senha</label>
                 <div class="senha-input-container">
-                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha...">
+                    <input type="password" id="senha" name="campo_senha" placeholder="Digite sua senha..." required>
                     <button type="button" class="btn-toggle-senha" onclick="toggleSenha()">
                         👁️
                     </button>
                 </div>
             </div>
 
-            <label>CNPJ</label>
-            <input type="text" name="campo_cnpj" placeholder="00.000.000/0001-00" required>
+            <label for="campo_cnpj">CNPJ</label>
+            <input type="text" id="campo_cnpj" name="campo_cnpj" placeholder="00.000.000/0001-00" required>
 
-            <label>CEP</label>
-            <input type="text" name="campo_cep" placeholder="00000-000" required>
+            <label for="campo_cep">CEP</label>
+            <input type="text" id="campo_cep" name="campo_cep" placeholder="00000-000" required>
 
             <button type="submit">Salvar e Continuar</button>
         </form>
