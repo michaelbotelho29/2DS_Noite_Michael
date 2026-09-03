@@ -71,7 +71,10 @@ Realizaremos testes de carga para identificar o limite do sistema e orientar o s
 Escolha do Padrão Arquitetural & Justificativa:  
 Será escolhida a arquitetura monolítica, pois é a que melhor se adapta ao nosso projeto acadêmico. Ela foi selecionada devido à facilidade de criação, rapidez nas funções, simplicidade, união dos componentes e eficiência.  
 
+Diagrama Arquitetural
+Clique na imagem abaixo para visualizar o diagrama em alta resolução no repositório:
 
+[![Diagrama do Sistema](./docs.png/Diagrama.drawio.png)](https://github.com/michaelbotelho29/2DS_Noite_Michael/blob/main/docs.png/Diagrama.drawio.png)
  
 
 
