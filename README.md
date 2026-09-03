@@ -69,7 +69,7 @@ Ocorreu falha no processamento de pagamento/pedido, cobrando o cliente sem envia
 Realizaremos testes de carga para identificar o limite do sistema e orientar o seu dimensionamento. Além disso, faremos o monitoramento em tempo real em dias de pico para atuar rapidamente e desativar funcionalidades secundárias, garantindo o desempenho máximo do fluxo principal.  
 
 Escolha do Padrão Arquitetural & Justificativa:  
-Será escolhida a arquitetura monolítica, pois é a que melhor se adapta ao nosso projeto acadêmico. Ela foi selecionada devido à facilidade de criação, rapidez nas funções, simplicidade, união dos componentes e eficiência.  
+Será escolhida a arquitetura Monolítica, pois é a que melhor se adapta ao nosso projeto acadêmico. Ela foi selecionada devido à facilidade de criação, rapidez nas funções, simplicidade, união dos componentes e eficiência.  
 
 Diagrama Arquitetural
 Clique na imagem abaixo para visualizar o diagrama em alta resolução no repositório:
