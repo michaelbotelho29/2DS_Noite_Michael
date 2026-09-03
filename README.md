@@ -24,12 +24,16 @@ nas redes para ele.
 
 RF1-  
 Sincronizar suas Redes Sociais.  
+
 RF2-  
 Postar simultaneamente em todas as Redes Sociais.  
+
 RF3-  
 Armazenar suas postagens.  
+
 RF4-  
 Centralizar as notificações de todas as Redes Sociais.  
+
 RF5-  
 Permitir o carregamento de imagens e vídeos.  
 
