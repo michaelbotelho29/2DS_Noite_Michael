@@ -15,7 +15,7 @@ Michael Kayo Rychard Botelho Sousa
 Zion De Jesus
 
 
-Descrição Geral:
+Descrição Geral:  
 O Sistema visa agilizar as postagens em Redes Sociais. O sistema
 iria centralizar várias redes sociais dentro dele e fará isso para que
 o usuário possa postar apenas pelo Social M Sync e o app postaria
