@@ -76,5 +76,5 @@ Clique na imagem abaixo para visualizar o diagrama em alta resolução no reposi
 
 [![Diagrama do Sistema](./docs.png/Diagrama.drawio.png)](https://github.com/michaelbotelho29/2DS_Noite_Michael/blob/main/docs.png/Diagrama.drawio.png)
  
-
+[![Arquitetura Orientada a Eventos](./docs.png/arquitetura_orientada_a_eventos.drawio.png)](https://github.com/michaelbotelho29/2DS_Noite_Michael/blob/main/docs.png/arquitetura_orientada_a_eventos.drawio.png)
 
