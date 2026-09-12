@@ -71,6 +71,22 @@ Realizaremos testes de carga para identificar o limite do sistema e orientar o s
 Escolha do Padrão Arquitetural & Justificativa:  
 Será escolhida a arquitetura Monolítica, pois é a que melhor se adapta ao nosso projeto acadêmico. Ela foi selecionada devido à facilidade de criação, rapidez nas funções, simplicidade, união dos componentes e eficiência.  
 
+1. Inclusão dos Componentes Distribuídos no Diagrama;
+
+Estratégia de Cache: Não pretendemos usar a memoria temporaria em nosso sistema. Não vemos necessidade disso. O sistema ira funcionar de forma imediata.
+
+2. Mapeamento dos Padrões de Comunicação;
+
+Fluxo 1 — Comunicação Síncrona (API REST):
+
+Descreva uma funcionalidade que exige resposta imediata para o usuário.
+R: Algo que deve ser obrigatoriamente imediato é a postagem executada pelo usuario. É necessario pois, se não for imediato, seria mais simples que o usuario postasse por si mesmo, sem utilizar o nosso sistema.
+
+Fluxo 2 — Comunicação Assíncrona (Filas/Mensageria):
+
+Descreva uma funcionalidade que pode ser processada em segundo plano (via fila) sem travar a navegação do usuário.
+R: Nós teremos sistema de envio de email ou telefone para confirmar sua identidade no momento da criação da conta. Tambem se os usuarios escolherem a verificação de duas etapas.
+
 Diagrama Arquitetural
 Clique na imagem abaixo para visualizar o diagrama em alta resolução no repositório:
 
